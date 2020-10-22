@@ -5,15 +5,74 @@
 
 body{
     background-color: darkcyan; 
-    color: white;
-    text-align: center;
+    color: rgb(250, 87, 27);
+    display: flex;
+    justify-content: center;
+    height: 65vh;
 }
 
-h1 {
-    color: coral;
+span{
+    margin: 0 5px;
 }
 
-
-img {
+.container {
     background-color: aqua;
+    width: 75vh;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 50px;
+    margin-top: 50px;
+}
+
+.container > .row{
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.row {
+    display: flex;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.team-logo {
+    border-radius: 50%;
+    border: 2px solid rgb(39, 230, 230);
+}
+
+.name {
+    margin: 20px 0;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.score {
+    font-size: xx-large;
+    font-weight: bold;
+    margin-top: -60px;
+}
+
+.shots {
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    border-radius: 50%;
+    border:solid 1.5px darkcyan;
+}
+
+#strike-button{
+    border:none;
+    border-radius: 25px;
+    font-size: large;
+    background: linear-gradient(135deg,#c02425,#f0cb35);
+    width: 300px;
+    color:white;
+    padding: 10px;
+    margin-top:30px;
 }
