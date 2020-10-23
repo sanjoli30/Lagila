@@ -1,0 +1,87 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+body{
+    background-color: darkcyan; 
+    color: rgb(250, 87, 27);
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 100vh;
+}
+
+span{
+    margin: 0 5px;
+}
+
+.container {
+    width: 75vh;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    /* padding: 40px 50px 0px; */
+}
+
+.container > .row{
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.row {
+    display: flex;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.column{
+    background-color: #33ccc4;
+    height: 42.5vh;  /*250px*/
+    border-radius: 6%;
+    margin: 20px 60px 0;
+}
+
+.team-logo {
+    border-radius: 20%;
+    border: 2px solid rgb(39, 230, 230);
+}
+
+.name {
+    margin: 20px 0;
+    font-size: x-large;
+    font-weight: bolder;
+    letter-spacing: 1px;
+}
+
+.score {
+    font-size: xx-large;
+    font-weight: bold;
+    margin-top: -60px;
+    color: #ff9a76;
+}
+
+.shots {
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    border-radius: 50%;
+    border:solid 1.5px darkcyan;
+}
+
+button{
+    background: linear-gradient(135deg,#c02425,#f0cb35);
+    color:white;
+    font-size: large;
+    width: 140px;
+    height: 50px;
+    border:none;
+    border-radius: 10px;
+    margin-top: -75px;
+}
