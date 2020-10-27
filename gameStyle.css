@@ -4,8 +4,11 @@
 }
 
 body{
+    /* background-image: url("./assets/sta.jpg");
+    background-size: cover;
+    background-repeat: no-repeat; */
     background-color: darkcyan; 
-    color: rgb(250, 87, 27);
+    color: rgb(216, 89, 43);
     display: flex;
     flex-wrap: wrap-reverse;
     justify-content: space-around;
@@ -15,6 +18,17 @@ body{
 
 span{
     margin: 0 5px;
+}
+
+button{
+    background: linear-gradient(135deg,#c02425,#f0cb35);
+    color:white;
+    font-size: large;
+    width: 140px;
+    height: 50px;
+    border:none;
+    border-radius: 10px;
+    margin-top: -75px;
 }
 
 .container {
@@ -67,7 +81,8 @@ span{
     color: #ff9a76;
 }
 
-.shots {
+/* .shots > .col { */
+.circle {    
     height: 20px;
     width: 20px;
     background-color: white;
@@ -75,13 +90,9 @@ span{
     border:solid 1.5px darkcyan;
 }
 
-button{
-    background: linear-gradient(135deg,#c02425,#f0cb35);
-    color:white;
-    font-size: large;
-    width: 140px;
-    height: 50px;
-    border:none;
-    border-radius: 10px;
-    margin-top: -75px;
+.result {
+    font-size: xx-large;
+    font-weight: bold;
+    margin-top: -150px;
+    color: #ff9a76;
 }
