@@ -38,45 +38,59 @@ selectTurn =()=>{
     turn1 = Math.round(Math.random())+1;
     turn2 = Math.round(Math.random())+3;
 };
-
+var x = 0;
 updateButtonText = ()=>{
     let button1 = document.getElementById('shoot1-button');
     let button2 = document.getElementById('shoot2-button');
-    
-    button1.textContent = `SHOOT ${turn1===1 ? team1.name : team2.name}`;
-    button2.textContent = `SHOOT ${turn2===3 ? team3.name : team4.name}`;
-    
-    var result1 = document.getElementById('result1');
-    result1.style.visibility="";
-
-    var result2 = document.getElementById('result2');
-    result2.style.visibility="";
 
     var scores = document.getElementsByClassName('score');
+    var winner1;
+    var winner2;
+    
+    if(x < 11) {  // first match
+        button1.textContent = `SHOOT ${turn1===1 ? team1.name : team2.name}`;
 
-    // check whether the game is over
-    if(team1.runs.length == 5 && team2.runs.length == 5){
-        button1.remove();
-        scores[0].style.visibility="hidden";
-        //check if the match is draw
-        result1.textContent = team1.score === team2.score? `It's a draw`:`${team1.score > team2.score? team1.name:team2.name} Wins`;
-        
-    }
-    else{
-     // check strike is over
-        turn1 = team1.runs.length == 5?2:team2.runs.length == 5?1:turn1;  
-    }
+        var result1 = document.getElementById('result1');
+        result1.style.visibility="";
 
-    if(team3.runs.length == 5 && team4.runs.length == 5){
-        button2.remove();
-        scores[1].style.visibility="hidden";
-        //check if the match is draw
-        result2.textContent = team3.score === team4.score? `It's a draw`:`${team3.score > team4.score? team3.name:team4.name} Wins`;
-        
+        // check whether the game is over
+        if(team1.runs.length == 5 && team2.runs.length == 5){
+            button1.remove();
+            scores[0].style.visibility="hidden";
+            //check if the match is draw
+            result1.textContent = team1.score === team2.score? `It's a draw`:`${team1.score > team2.score? team1.name:team2.name} Wins`;
+            if(team1.score > team2.score){
+                winner1 = team1;
+            } else {
+                winner1 = team2;
+            }
+        }
+        else{
+        // check strike is over
+            turn1 = team1.runs.length == 5?2:team2.runs.length == 5?1:turn1;  
+        }
     }
-    else{
-     // check strike is over
-        turn2 = team3.runs.length == 5?4:team4.runs.length == 5?3:turn2;  
+    else { // second match
+        button2.textContent = `SHOOT ${turn2===3 ? team3.name : team4.name}`;
+    
+        var result2 = document.getElementById('result2');
+        result2.style.visibility="";
+
+        if(team3.runs.length == 5 && team4.runs.length == 5){
+            button2.remove();
+            scores[1].style.visibility="hidden";
+            //check if the match is draw
+            result2.textContent = team3.score === team4.score? `It's a draw`:`${team3.score > team4.score? team3.name:team4.name}\ Wins`;
+            if(team3.score > team4.score){
+                winner2 = team3;
+            } else {
+                winner2 = team4;
+            }
+        }
+        else{
+        // check strike is over
+            turn2 = team3.runs.length == 5?4:team4.runs.length == 5?3:turn2;  
+        }
     }
 };
 
@@ -96,38 +110,35 @@ updateName = ()=>{
     document.getElementById('team4-name').textContent = team4.name;
 };
 
-var shootButtonOneClick = ()=>{
+var shootButtonClick = ()=>{
     var runs = score[Math.round(Math.random())];
-   // console.log(runs);
-    
-    // check which team shots first
-    if(turn1 == 1) {
-        team1.runs.push(runs);
-        team1.score = calculateScore(team1.runs);
-       // console.log(team1.score);
-    }
-    else {
-        team2.runs.push(runs);
-        team2.score = calculateScore(team2.runs);
-     //   console.log(team2.score);
-    }
+    x++;
 
-    updateButtonText();
-    updateScore();
-};
-
-var shootButtonTwoClick = ()=>{
-    var runs = score[Math.round(Math.random())];
-    // check which team shots first
-    if(turn2 == 3) {
-        team3.runs.push(runs);
-        team3.score = calculateScore(team3.runs);
-       // console.log(team1.score);
+    if(x < 11) {  // first match
+        // check which team shots first
+        if(turn1 == 1) {
+            team1.runs.push(runs);
+            team1.score = calculateScore(team1.runs);
+        // console.log(team1.score);
+        }
+        else {
+            team2.runs.push(runs);
+            team2.score = calculateScore(team2.runs);
+        //   console.log(team2.score);
+        }
     }
-    else {
-        team4.runs.push(runs);
-        team4.score = calculateScore(team4.runs);
-     //   console.log(team2.score);
+    else{  // second match
+            // check which team shots first
+        if(turn2 == 3) {
+            team3.runs.push(runs);
+            team3.score = calculateScore(team3.runs);
+        // console.log(team1.score);
+        }
+        else {
+            team4.runs.push(runs);
+            team4.score = calculateScore(team4.runs);
+        //   console.log(team2.score);
+        }
     }
 
     updateButtonText();
@@ -152,8 +163,8 @@ updateRuns = ()=>{
     
     team2.runs.forEach((run,index)=>{
         run == 0 ? teamTwoShotsElement[index].style.backgroundColor = "red" : teamTwoShotsElement[index].style.backgroundColor = "green";
-    });
-
+    }); 
+    
     team3.runs.forEach((run,index)=>{
         run == 0 ? teamThreeShotsElement[index].style.backgroundColor = "red" : teamThreeShotsElement[index].style.backgroundColor = "green";
     });
